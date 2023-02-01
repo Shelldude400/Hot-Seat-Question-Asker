@@ -2,16 +2,17 @@ import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 
 export function GameControl(props) {
+
     return <>
         <PlayerAnswerBox>
             Player Answer: 
-            <SelectAnswerButton>A</SelectAnswerButton>
-            <SelectAnswerButton>B</SelectAnswerButton>
-            <SelectAnswerButton>C</SelectAnswerButton>
-            <SelectAnswerButton>D</SelectAnswerButton>
+            <SelectAnswerButton onClick={ () => {props.userFunc("A")}}>A</SelectAnswerButton>
+            <SelectAnswerButton onClick={ () => {props.userFunc("B")}}>B</SelectAnswerButton>
+            <SelectAnswerButton onClick={ () => {props.userFunc("C")}}>C</SelectAnswerButton>
+            <SelectAnswerButton onClick={ () => {props.userFunc("D")}}>D</SelectAnswerButton>
         </PlayerAnswerBox>
-        <CorrectAnswerButton>Show Correct Answer</CorrectAnswerButton>
-        {/* <NextQuestionButton onClick={props.setQNo(props.cQNo + 1)}>Next Question</NextQuestionButton> */}
+        <CorrectAnswerButton onClick={ () => {props.correctFunc()}}>Show Correct Answer</CorrectAnswerButton>
+        <NextQuestionButton onClick={props.goToNextQuestion}>Next Question</NextQuestionButton>
     </>
 }
 

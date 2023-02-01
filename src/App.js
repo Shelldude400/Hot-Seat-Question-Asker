@@ -6,16 +6,29 @@ import GameControl from './GameControl.jsx';
 function App() {
 
   const [questionSet, setQuestionSet] = useState([]);
-  const [currentQuestionNumber, setCurrentQuestionNumber] = useState("1");
+  const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1);
+  const [correctAnswer, setCurrentCorrectAnswer] = useState("");
+  const [userAnswer, setCurrentUserAnswer] = useState("");
 
   function goToNextQuestion() {
     setCurrentQuestionNumber(currentQuestionNumber + 1);
+    setCurrentCorrectAnswer("");
+    setCurrentUserAnswer("");
   }
+
+  function updateCorrectAnswer() {
+    setCurrentCorrectAnswer(questionSet[currentQuestionNumber].Answer);
+  }
+
+  function updateUserAnswer(answer) {
+    setCurrentUserAnswer(answer);
+  }
+
   return (
     <>
-    <QuestionComponents currentQuestion={questionSet[currentQuestionNumber]}></QuestionComponents>
+    <QuestionComponents userAnswer={userAnswer} correctAnswer={correctAnswer} currentQuestion={questionSet[currentQuestionNumber]}></QuestionComponents>
     <FileImport updateData={setQuestionSet}/>
-    <GameControl setQNo={setCurrentQuestionNumber} cQNo={currentQuestionNumber}></GameControl>
+    <GameControl userFunc={updateUserAnswer} correctFunc={updateCorrectAnswer} goToNextQuestion={goToNextQuestion}></GameControl>
     </>
   );
 }

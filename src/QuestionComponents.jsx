@@ -9,12 +9,12 @@ export function QuestionComponents(props) {
         <QuestionBox> {props.currentQuestion?.Question}</QuestionBox>
         <AnswerContainer>
             <AnswerRow>
-                <AnswerBox>A: {props.currentQuestion?.A}</AnswerBox>
-                <AnswerBox>B: {props.currentQuestion?.B}</AnswerBox>
+                <AnswerBox showCorrect={props.correctAnswer === "A"} showUser={props.userAnswer === "A"}>A: {props.currentQuestion?.A}</AnswerBox>
+                <AnswerBox showCorrect={props.correctAnswer === "B"} showUser={props.userAnswer === "B"}>B: {props.currentQuestion?.B}</AnswerBox>
             </AnswerRow>
             <AnswerRow>
-                <AnswerBox>C: {props.currentQuestion?.C}</AnswerBox>
-                <AnswerBox>D: {props.currentQuestion?.D}</AnswerBox>
+                <AnswerBox showCorrect={props.correctAnswer === "C"} showUser={props.userAnswer === "C"}>C: {props.currentQuestion?.C}</AnswerBox>
+                <AnswerBox showCorrect={props.correctAnswer === "D"} showUser={props.userAnswer === "D"}>D: {props.currentQuestion?.D}</AnswerBox>
             </AnswerRow>
         </AnswerContainer>
     </>
@@ -40,6 +40,7 @@ const AnswerBox = styled.div`
     margin: 32px;
     padding-left: 10px;
     padding-top: 10px;
+    background-color: ${props => props.showCorrect? "green" : props.showUser? "orange" : ""}; 
 `
 
 const AnswerContainer = styled.div`
