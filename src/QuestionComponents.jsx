@@ -9,12 +9,12 @@ export function QuestionComponents(props) {
         <QuestionBox> {props.currentQuestion?.Question}</QuestionBox>
         <AnswerContainer>
             <AnswerRow>
-                <AnswerBox showCorrect={props.correctAnswer === "A"} showUser={props.userAnswer === "A"}>A: {props.currentQuestion?.A}</AnswerBox>
-                <AnswerBox showCorrect={props.correctAnswer === "B"} showUser={props.userAnswer === "B"}>B: {props.currentQuestion?.B}</AnswerBox>
+                <AnswerBox showCorrect={props.correctAnswer === "A"} showUser={props.userAnswer === "A"}><AnswerLetter>A: </AnswerLetter> {props.currentQuestion?.A}</AnswerBox>
+                <AnswerBox showCorrect={props.correctAnswer === "B"} showUser={props.userAnswer === "B"}><AnswerLetter>B: </AnswerLetter> {props.currentQuestion?.B}</AnswerBox>
             </AnswerRow>
             <AnswerRow>
-                <AnswerBox showCorrect={props.correctAnswer === "C"} showUser={props.userAnswer === "C"}>C: {props.currentQuestion?.C}</AnswerBox>
-                <AnswerBox showCorrect={props.correctAnswer === "D"} showUser={props.userAnswer === "D"}>D: {props.currentQuestion?.D}</AnswerBox>
+                <AnswerBox showCorrect={props.correctAnswer === "C"} showUser={props.userAnswer === "C"}><AnswerLetter>C: </AnswerLetter> {props.currentQuestion?.C}</AnswerBox>
+                <AnswerBox showCorrect={props.correctAnswer === "D"} showUser={props.userAnswer === "D"}><AnswerLetter>D: </AnswerLetter> {props.currentQuestion?.D}</AnswerBox>
             </AnswerRow>
         </AnswerContainer>
     </>
@@ -22,25 +22,37 @@ export function QuestionComponents(props) {
 
 export default QuestionComponents;
 
+const AnswerLetter = styled.div`
+    padding-right: 10px;
+    color: gold;
+`
 
 const QuestionBox = styled.div`
+    display: flex;
+    align-items: center;
     border: 3px solid black;
     font-size: 24px;
-    width: 720px;
-    height: 50px;
+    width: 700px;
+    height: 100px;
     margin: 32px;
+    padding: 10px;
+    justify-content: center;
     text-align: center;
+    background-color: #00008B;
+    color: white;
 `
 
 const AnswerBox = styled.div`
-    font-size: 24px;
+    display: flex;
+    font-size: 20px;
+    color: white;
     border: 2px solid black;
     width: 318px;
     height: 50px;
     margin: 32px;
     padding-left: 10px;
-    padding-top: 10px;
-    background-color: ${props => props.showCorrect? "green" : props.showUser? "orange" : ""}; 
+    align-items: center;
+    background-color: ${props => props.showCorrect? "green" : props.showUser? "orange" : "#00008B"}; 
 `
 
 const AnswerContainer = styled.div`

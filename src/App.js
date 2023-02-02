@@ -17,7 +17,7 @@ function App() {
   }
 
   function updateCorrectAnswer() {
-    setCurrentCorrectAnswer(questionSet[currentQuestionNumber].Answer);
+    setCurrentCorrectAnswer(questionSet[currentQuestionNumber - 1].Answer);
   }
 
   function updateUserAnswer(answer) {
@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-    <QuestionComponents userAnswer={userAnswer} correctAnswer={correctAnswer} currentQuestion={questionSet[currentQuestionNumber]}></QuestionComponents>
+    <QuestionComponents userAnswer={userAnswer} correctAnswer={correctAnswer} currentQuestion={questionSet[currentQuestionNumber - 1]}></QuestionComponents>
     <FileImport updateData={setQuestionSet}/>
     <GameControl userFunc={updateUserAnswer} correctFunc={updateCorrectAnswer} goToNextQuestion={goToNextQuestion}></GameControl>
     </>
